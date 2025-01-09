@@ -16,7 +16,7 @@ local calls = {}
 -- https://docs.fivemerr.com/integrations/mdt-scripts/ps-mdt
 -- Images for mug shots will be uploaded here and will not expire.
 local FivemerrMugShot = 'https://api.fivemerr.com/v1/media/images'
-local FivemerrApiKey = 'YOUR API KEY HERE'
+local FivemerrApiKey = '04775dbd1a98e5795d70983ee5a5806c'
 
 --------------------------------
 -- NOT RECOMMENDED. WE RECOMMEND USING Fivemerr.
@@ -423,7 +423,7 @@ QBCore.Functions.CreateCallback('mdt:server:GetProfileData', function(source, cb
         apartmentData = GetPlayerApartment(target.citizenid)
         if apartmentData then
             if apartmentData[1] then
-                apartmentData = apartmentData[1].label .. ' (' ..apartmentData[1].name..')'
+                apartmentData = apartmentData[1].property_name .. ' (' ..apartmentData[1].interior..')'
             else
                 TriggerClientEvent("QBCore:Notify", src, 'The citizen does not have an apartment.', 'error')
                 print('The citizen does not have an apartment. Set Config.UsingDefaultQBApartments to false.')
@@ -529,20 +529,20 @@ QBCore.Functions.CreateCallback('mdt:server:GetProfileData', function(source, cb
 			person.properties = Houses
 		else
 			local Coords = {}
-			local Houses = {}
-			local properties= GetPlayerProperties(person.cid)
-			for k, v in pairs(properties) do
-				Coords[#Coords+1] = {
-					coords = json.decode(v["coords"]),
-				}
-			end
-			for index = 1, #Coords, 1 do
-				Houses[#Houses+1] = {
-					label = properties[index]["label"],
-					coords = tostring(Coords[index]["coords"]["enter"]["x"]..",".. Coords[index]["coords"]["enter"]["y"].. ",".. Coords[index]["coords"]["enter"]["z"]),
-				}
-			end
-			person.properties = Houses
+            local Houses = {}
+            local properties= GetPlayerProperties(person.cid)
+            for k, v in pairs(properties) do
+                Coords[#Coords+1] = {
+                    coords = json.decode(v["coords"]),
+                }
+            end
+            for index = 1, #Coords, 1 do
+                Houses[#Houses+1] = {
+                    label = properties[index]["property_name"],
+                    coords = tostring(Coords[index]["coords"]["x"]..",".. Coords[index]["coords"]["y"].. ",".. Coords[index]["coords"]["z"]),
+                }
+            end
+            person.properties = Houses
 		end
 	end
 	local mdtData = GetPersonInformation(sentId, JobType)
@@ -2138,3 +2138,7 @@ if Config.InventoryForWeaponsImages == "ox_inventory" and Config.RegisterWeapons
 		})
 	end
 end
+
+RegisterServerEvent("ps-mdt:jailPlayer", function(sourceId, sentence)
+    lib.callback.await('xt-prison:client:enterJail', sourceId, sentence)
+end)

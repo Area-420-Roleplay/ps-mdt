@@ -11,7 +11,7 @@ Config.FivemerrMugShot = true
 
 -- Discord webhook for images. NOT RECOMMENDED, IMAGES EXPIRE.
 Config.MugShotWebhook = false
-Config.UseCQCMugshot = true
+Config.UseCQCMugshot = false
 
 -- Front, Back Side. Use 4 for both sides, we recommend leaving at 1 for default.
 Config.MugPhotos = 1
@@ -22,12 +22,12 @@ Config.BillVariation = true
 
 -- If set to false (default) = The fine amount is just being removed from the player's bank account
 -- If set to true = The fine amount is beeing added to the society account after being removed from the player's bank account
-Config.QBBankingUse = false
+Config.QBBankingUse = true
 
 -- Set up your inventory to automatically retrieve images when a weapon is registered at a weapon shop or self-registered.
 -- If you're utilizing lj-inventory's latest version from GitHub, no further modifications are necessary. 
 -- However, if you're using a different inventory system, please refer to the "Inventory Edit | Automatic Add Weapons with images" section in ps-mdt's README.
-Config.InventoryForWeaponsImages = "lj-inventory"
+Config.InventoryForWeaponsImages = "ox_inventory"
 
 -- Only compatible with ox_inventory
 Config.RegisterWeaponsAutomatically = true
@@ -36,7 +36,7 @@ Config.RegisterWeaponsAutomatically = true
 Config.RegisterCreatedWeapons = true
 
 -- "LegacyFuel", "lj-fuel", "ps-fuel"
-Config.Fuel = "ps-fuel"
+Config.Fuel = "cdn-fuel"
 
 -- Google Docs Link
 Config.sopLink = {
@@ -66,24 +66,14 @@ Config.RosterLink = {
 
 Config.PoliceJobs = {
     ['police'] = true,
-    ['lspd'] = true,
-    ['bcso'] = true,
-    ['sast'] = true,
-    ['sasp'] = true,
-    ['doc'] = true,
-    ['lssd'] = true,
-    ['sapr'] = true,
-    ['pa'] = true
 }
 
 Config.AmbulanceJobs = {
     ['ambulance'] = true,
-    ['doctor'] = true
 }
 
 Config.DojJobs = {
     ['lawyer'] = true,
-    ['judge'] = true
 }
 
 -- This is a workaround solution because the qb-menu present in qb-policejob fills in an impound location and sends it to the event. 
@@ -96,7 +86,7 @@ Config.ImpoundLocations = {
 
 -- Support for Wraith ARS 2X. 
 
-Config.UseWolfknightRadar = false
+Config.UseWolfknightRadar = true
 Config.WolfknightNotifyTime = 5000 -- How long the notification displays for in milliseconds (30000 = 30 seconds)
 Config.PlateScanForDriversLicense = false -- If true, plate scanner will check if the owner of the scanned vehicle has a drivers license
 
@@ -110,24 +100,6 @@ Config.LogPerms = {
 	['police'] = {
 		[4] = true,
 	},
-    ['bcso'] = {
-		[4] = true,
-	},
-    ['sast'] = {
-		[4] = true,
-	},
-    ['sasp'] = {
-		[4] = true,
-	},
-    ['sapr'] = {
-		[4] = true,
-	},
-    ['doc'] = {
-		[4] = true,
-	},
-    ['lssd'] = {
-		[4] = true,
-	},
 }
 
 Config.RemoveIncidentPerms = {
@@ -135,24 +107,6 @@ Config.RemoveIncidentPerms = {
 		[4] = true,
 	},
 	['police'] = {
-		[4] = true,
-	},
-    ['bcso'] = {
-		[4] = true,
-	},
-    ['sast'] = {
-		[4] = true,
-	},
-    ['sasp'] = {
-		[4] = true,
-	},
-    ['sapr'] = {
-		[4] = true,
-	},
-    ['doc'] = {
-		[4] = true,
-	},
-    ['lssd'] = {
 		[4] = true,
 	},
 }
@@ -164,24 +118,6 @@ Config.RemoveReportPerms = {
 	['police'] = {
 		[4] = true,
 	},
-    ['bcso'] = {
-		[4] = true,
-	},
-    ['sast'] = {
-		[4] = true,
-	},
-    ['sasp'] = {
-		[4] = true,
-	},
-    ['sapr'] = {
-		[4] = true,
-	},
-    ['doc'] = {
-		[4] = true,
-	},
-    ['lssd'] = {
-		[4] = true,
-	},
 }
 
 Config.RemoveWeaponsPerms = {
@@ -189,24 +125,6 @@ Config.RemoveWeaponsPerms = {
 		[4] = true,
 	},
 	['police'] = {
-		[4] = true,
-	},
-    ['bcso'] = {
-		[4] = true,
-	},
-    ['sast'] = {
-		[4] = true,
-	},
-    ['sasp'] = {
-		[4] = true,
-	},
-    ['sapr'] = {
-		[4] = true,
-	},
-    ['doc'] = {
-		[4] = true,
-	},
-    ['lssd'] = {
 		[4] = true,
 	},
 }
